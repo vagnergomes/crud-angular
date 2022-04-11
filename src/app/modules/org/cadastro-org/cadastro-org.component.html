@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row box-cadastro">
+    <h3>Você está quase criando sua agenda! Antes informe alguns dados.</h3>
+    <form class="mt-5" #frm="ngForm">
+      <div class="form-group">
+        <input type="text"
+        class="form-control  cadastro"
+        id="name"
+        name="name"
+        placeholder="Nome"
+        required="true"
+        [(ngModel)]="org.name"
+        />
+      </div>
+
+      <div class="form-group">
+        <input type="text"
+        class="form-control  cadastro"
+        id="description"
+        name="description"
+        placeholder="Descrição"
+        required="true"
+        [(ngModel)]="org.description"
+        />
+      </div>
+
+      <div class="form-group">
+        <input type="text"
+        class="form-control  cadastro"
+        id="type"
+        name="type"
+        placeholder="Tipo"
+        required="true"
+        [(ngModel)]="org.type"
+        />
+      </div>
+
+      <div class="form-group">
+        <input type="text"
+        class="form-control  cadastro"
+        id="n_register"
+        name="n_register"
+        placeholder="Número registro"
+        required="true"
+        [(ngModel)]="org.n_register"
+        />
+      </div>
+
+      <div class="form-group">
+        <input type="text"
+        class="form-control  cadastro"
+        id="city"
+        name="city"
+        placeholder="Cidade"
+        required="true"
+        [(ngModel)]="org.city"
+        />
+      </div>
+
+      <div class="form-group">
+        <input type="text"
+        class="form-control  cadastro"
+        id="province"
+        name="province"
+        placeholder="UF"
+        required="true"
+        [(ngModel)]="org.province"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <h6>Visivel</h6>
+        <mat-slide-toggle
+          id="visible"
+          name="visible"
+          class="example-margin"
+          [color]="color"
+          [(ngModel)]="org.visible"
+          [disabled]="disabled">
+        </mat-slide-toggle>
+      </div>
+
+      <div class="form-group">
+        <h6>Ativo</h6>
+        <mat-slide-toggle
+          id="active"
+          name="active"
+          class="example-margin"
+          [color]="color"
+          [(ngModel)]="org.active"
+          [disabled]="disabled">
+        </mat-slide-toggle>
+      </div>
+
+      <div>Aqui: {{org.visible}}</div>
+      <div>Aqui: {{org.active}}</div>
+
+      <button type="submit" class="btn btn-cadastro btn-lg"
+      [disabled]="frm.invalid"
+      (click)="criar()">Cadastrar</button>
+
+
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row box-cadastro">
+    <h3>Estamos chegando.</h3>
+    <form class="mt-5" #frm="ngForm">
+      <div class="form">
+        <input type="text"
+        class="form-control  cadastro"
+        id="name"
+        name="name"
+        placeholder="Nome"
+        [(ngModel)]="schedule.name"
+        />
+      </div>
+
+      <div class="form">
+        <input type="text"
+        class="form-control  cadastro"
+        id="description"
+        name="description"
+        placeholder="Descrição"
+        [(ngModel)]="schedule.description"
+        />
+      </div>
+
+
+      <div class="form">
+        <h6>Ativo</h6>
+        <mat-slide-toggle
+          id="active"
+          name="active"
+          class="example-margin"
+          [color]="color"
+          [(ngModel)]="schedule.active"
+          [disabled]="disabled">
+        </mat-slide-toggle>
+      </div>
+
+      <div>Aqui: {{schedule.active}}</div>
+
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Organização</mat-label>
+          <mat-select [(ngModel)]="schedule.org" id="org" name="org"  >
+            <!--<mat-select-trigger>
+               {{toppings.value ? toppings.value[0] : ''}}
+              <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+                (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger> -->
+
+            <mat-option *ngFor="let org of orgs" [value]="org">{{org.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+
+      <button type="submit" class="btn btn-cadastro btn-lg"
+      [disabled]="frm.invalid"
+      (click)="criar()">Cadastrar</button>
+
+
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,64 @@
+.wrapper-header{
+  height: 30vh;
+  padding: 10px;
+  background: #b37401;
+  color: #fff;
+  box-shadow: 0 2px 5px -2px grey;
+}
+
+// .menu-header li{
+//   list-style: none;
+//   display: inline;
+//   position: relative;
+//   margin: 10px;
+//   top: 30px;
+//   font-size: 18px;;
+// }
+
+.menu-button{
+  list-style: none;
+  display: inline;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;;
+}
+
+.mat-button{
+  background-color: #fff;
+  color: #000;
+  opacity: 0.9;
+  font-size: 18px;
+  zoom: 1;
+}
+
+.criar-conta{
+  margin: 5px;
+  text-decoration: underline;
+  font-size: 18px;
+}
+.acessar-conta{
+  margin: 5px;
+  margin-left: 50px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  width: 100px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 500px){
+  .wrapper-header{
+    height: 10vh;
+  }
+
+  .criar-conta{
+    margin: 0px;
+  }
+
+  .acessar-conta{
+  margin: 0px;
+  }
+}
