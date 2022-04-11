@@ -20,7 +20,7 @@ import { ListScheduleComponent } from './modules/schedule/list-schedule/list-sch
 import { ListOrgComponent } from './modules/org/list-org/list-org.component';
 
 @NgModule({
-  declarations: [
+  declarations:[
     AppComponent,
     HeaderComponent,
     ContentComponent,
