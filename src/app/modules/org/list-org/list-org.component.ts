@@ -1,3 +1,4 @@
+import { ModalDeleteOrgComponent } from './../modals/modal-delete-org/modal-delete-org.component';
 import { ModalDetailsOrgComponent } from './../modals/modal-details-org/modal-details-org.component';
 import { Component, OnInit } from '@angular/core';
 import { catchError, empty, Observable } from 'rxjs';
@@ -20,7 +21,7 @@ export class ListOrgComponent implements OnInit {
 
   constructor(
     public orgService: OrgService,
-    public dialogDetails: MatDialog,
+    public dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {
     this.org = {} as Org;
@@ -47,15 +48,24 @@ export class ListOrgComponent implements OnInit {
   public openDetails(org: Org){
     this.orgService.getOrg(org.id).subscribe( res => {
       this.org = res
-      const dialogRef = this.dialogDetails.open(ModalDetailsOrgComponent, {
+      const dialogRef = this.dialog.open(ModalDetailsOrgComponent, {
         height: '400px'
       });
       dialogRef.componentInstance.org = this.org;
       dialogRef.afterClosed().subscribe(result => {
     });
     })
+  }
 
+  public openDelete(org: Org){
 
+    const dialogRef = this.dialog.open(ModalDeleteOrgComponent,  {
+      height: '200px'
+    })
+    dialogRef.componentInstance.org = org;
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 
 }

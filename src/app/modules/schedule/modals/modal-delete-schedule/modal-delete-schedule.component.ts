@@ -30,11 +30,15 @@ export class ModalDeleteScheduleComponent implements OnInit {
   }
 
   public deletar(id: number){
-    this.scheduleService.delete(id).subscribe(res => {
-      this.showMessage("Deletado.", false);
+    this.scheduleService.delete(id).subscribe((res: any) => {
+      console.log("---1: " + res)
+      this.showMessage("Deletado com sucesso.", false);
 
-    }, (err) =>{
-      this.showMessage("Erro ao deletar: " + err['message'], true);
+    }, (err: any) =>{
+      if(err['status'] === 200)
+        this.showMessage("Deletado com sucesso.", false);
+      else
+        this.showMessage("Erro ao deletar: " + err['status'] + " : " + err['message'], true);
     });
   }
 

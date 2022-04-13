@@ -6,7 +6,7 @@ import { Org } from 'src/app/shared/model/org.model';
   providedIn: 'root'
 })
 export class OrgService {
-  apiUrl = "http://localhost:9191/";
+  apiUrl = "http://localhost:9191/org/";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,17 +18,17 @@ export class OrgService {
    }
 
   public criar(org: Org){
-    const _url = this.apiUrl+"org/add";
+    const _url = this.apiUrl+"add";
     return this.httpClient.post(_url, org);
   }
 
   public getOrgs(){
-    const _url = this.apiUrl+"org/orgs";
+    const _url = this.apiUrl+"orgs";
     return this.httpClient.get<Org[]>(_url);
    }
 
    public getOrg(id: number): Observable<Org>{
-     const _url = this.apiUrl+"org/org/"+id;
+     const _url = this.apiUrl+"org/"+id;
      return this.httpClient.get<Org>(_url);
    }
 

@@ -1,0 +1,21 @@
+<mat-card class="example-card">
+
+  <div *ngIf="org" class="container">
+    <h5>Continuar com esse procedimento pode acarretar na deleção de outros itens.</h5>
+    <h6>Tem certeza que deseja apagar <b>{{org.name}}</b> ?</h6>
+  <form method="post" #frm="ngForm"  >
+    <!-- <div class="form-group">
+      <label for="name">Tem certeza que deseja apagar: {{schedule.name}} </label>
+      <label for="quantity"></label>
+    </div> -->
+
+
+    <button type="submit" class="btn btn-danger" (click)="deletar(org.id)"
+    [disabled]="frm.invalid" >Apagar</button>
+    <button type="submit" class="btn btn-default"
+    [disabled]="frm.invalid" >Cancelar</button>
+    </form>
+
+  </div>
+  </mat-card>
+

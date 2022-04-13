@@ -5,5 +5,6 @@ export interface Schedule{
   name: string,
   description: string,
   active: boolean,
+  data: Date,
   org: Org
 }

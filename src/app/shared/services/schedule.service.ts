@@ -8,7 +8,7 @@ import { Schedule } from 'src/app/shared/model/schedule.model';
 })
 export class ScheduleService {
   a: any;
-  apiUrl = "http://localhost:9191/"
+  apiUrl = "http://localhost:9191/schedule/"
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -17,17 +17,17 @@ export class ScheduleService {
   };
 
   constructor(private httpClient: HttpClient) {
-    this.a = {}
+    this.a = ""
    }
 
 
   public criar(schedule: Schedule){
-    const _url = this.apiUrl+"schedule/add";
+    const _url = this.apiUrl+"add";
     return this.httpClient.post(_url, schedule);
   }
 
   public getSchedules() {
-    const _url = this.apiUrl+"schedule/schedules";
+    const _url = this.apiUrl+"schedules";
     const r = this.httpClient.get<Schedule[]>(_url);
     //console.log("--Erro: "+r)
 
@@ -35,17 +35,17 @@ export class ScheduleService {
   }
 
   public getSchedule(id: number): Observable<Schedule>{
-    const _url = this.apiUrl+"schedule/schedule/"+id;
+    const _url = this.apiUrl+"schedule/"+id;
     return this.httpClient.get<Schedule>(_url);
   }
 
   update(id: number, request: Schedule){
-    const _url = this.apiUrl+"schedule/update/";
+    const _url = this.apiUrl+"update/";
     return this.httpClient.put<Schedule>(_url, request);
   }
 
   delete(id: number){
-    const _url = this.apiUrl+"schedule/delete/"+id;
+    const _url = this.apiUrl+"delete/"+id;
     return this.httpClient.delete(_url);
   }
 

@@ -57,14 +57,14 @@ export class CadastroOrgComponent implements OnInit {
         this.showMessage('Salvo com sucesso.');
         this.limparForm();
      }, (err) => {
-      this.showMessage("Erro: " + err['message'], true);
+      this.showMessage("Erro: " + err['status'] + " : " + err['message'], true);
     })
     }else{
       this.orgService.criar(this.org).subscribe(res => {
         this.showMessage('Editado com sucesso.');
         //this.limparForm();
       }, (err) => {
-        this.showMessage("Erro: " + err['message'], true);
+        this.showMessage("Erro: " + err['status'] + " : " + err['message'], true);
       })
     }
    }

@@ -11,6 +11,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +29,8 @@ import { ListOrgComponent } from './modules/org/list-org/list-org.component';
 import { ModalDetailsOrgComponent } from './modules/org/modals/modal-details-org/modal-details-org.component';
 import { ModalDetailsScheduleComponent } from './modules/schedule/modals/modal-details-schedule/modal-details-schedule.component';
 import { ModalDeleteScheduleComponent } from './modules/schedule/modals/modal-delete-schedule/modal-delete-schedule.component';
+import { ModalDeleteOrgComponent } from './modules/org/modals/modal-delete-org/modal-delete-org.component';
+
 
 @NgModule({
   declarations:[
@@ -37,7 +44,8 @@ import { ModalDeleteScheduleComponent } from './modules/schedule/modals/modal-de
     ListOrgComponent,
     ModalDetailsOrgComponent,
     ModalDetailsScheduleComponent,
-    ModalDeleteScheduleComponent
+    ModalDeleteScheduleComponent,
+    ModalDeleteOrgComponent
   ],
   imports: [
     HttpClientModule,
@@ -52,7 +60,12 @@ import { ModalDeleteScheduleComponent } from './modules/schedule/modals/modal-de
     MatIconModule,
     MatTableModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
 
   ],
   providers: [],
