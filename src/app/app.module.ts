@@ -8,6 +8,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +21,9 @@ import { CadastroOrgComponent } from './modules/org/cadastro-org/cadastro-org.co
 import { CadastroScheduleComponent } from './modules/schedule/cadastro-schedule/cadastro-schedule.component';
 import { ListScheduleComponent } from './modules/schedule/list-schedule/list-schedule.component';
 import { ListOrgComponent } from './modules/org/list-org/list-org.component';
+import { ModalDetailsOrgComponent } from './modules/org/modals/modal-details-org/modal-details-org.component';
+import { ModalDetailsScheduleComponent } from './modules/schedule/modals/modal-details-schedule/modal-details-schedule.component';
+import { ModalDeleteScheduleComponent } from './modules/schedule/modals/modal-delete-schedule/modal-delete-schedule.component';
 
 @NgModule({
   declarations:[
@@ -28,7 +34,10 @@ import { ListOrgComponent } from './modules/org/list-org/list-org.component';
     CadastroOrgComponent,
     CadastroScheduleComponent,
     ListScheduleComponent,
-    ListOrgComponent
+    ListOrgComponent,
+    ModalDetailsOrgComponent,
+    ModalDetailsScheduleComponent,
+    ModalDeleteScheduleComponent
   ],
   imports: [
     HttpClientModule,
@@ -40,7 +49,10 @@ import { ListOrgComponent } from './modules/org/list-org/list-org.component';
     MatSnackBarModule,
     MatSelectModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatDialogModule,
+    MatCardModule
 
   ],
   providers: [],

@@ -8,6 +8,7 @@
         id="name"
         name="name"
         placeholder="Nome"
+        required="true"
         [(ngModel)]="schedule.name"
         />
       </div>
@@ -40,7 +41,10 @@
       <div class="form-group">
         <mat-form-field appearance="fill">
           <mat-label>Organização</mat-label>
-          <mat-select [(ngModel)]="schedule.org" id="org" name="org"  >
+          <mat-select [(ngModel)]="schedule.org"
+          id="org"
+          name="org"
+          required="true" >
             <!--<mat-select-trigger>
                {{toppings.value ? toppings.value[0] : ''}}
               <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">

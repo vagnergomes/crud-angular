@@ -11,8 +11,10 @@ const routes: Routes = [
 {path: '', component: ContentComponent},
 {path: 'org', component: CadastroOrgComponent},
 {path: 'org-list', component: ListOrgComponent},
+{path: 'org/edit/:id', component: CadastroOrgComponent},
 {path: 'schedule', component: CadastroScheduleComponent},
-{path: 'schedule-list', component: ListScheduleComponent}
+{path: 'schedule-list', component: ListScheduleComponent},
+{path: 'schedule/edit/:id', component: CadastroScheduleComponent}
 ]
 
 @NgModule({

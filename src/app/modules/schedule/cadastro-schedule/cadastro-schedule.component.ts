@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ThemePalette } from '@angular/material/core';
 import {FormControl} from '@angular/forms';
 import { OrgService } from 'src/app/shared/services/org.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-schedule',
@@ -13,35 +15,42 @@ import { OrgService } from 'src/app/shared/services/org.service';
   styleUrls: ['./cadastro-schedule.component.scss']
 })
 export class CadastroScheduleComponent implements OnInit {
-
+  id: any;
   orgs: any;
-  schedule: Schedule;
+  schedule: any;
   color: ThemePalette = 'accent';
   disabled: boolean;
 
   //selectForm = new FormControl();
-
   //toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   constructor(
     public scheduleService: ScheduleService,
     public orgSevice: OrgService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private route: ActivatedRoute
   ) {
     this.schedule = {} as Schedule;
     this.disabled = false;
 
     this.orgs = this.orgSevice.getOrgs().subscribe(res => {
-      this.orgs = res;
-    })
+    this.orgs = res;
+    });
+
+    this.id = this.route.snapshot.paramMap.get('id');
+    if(this.id != null){
+      this.schedule = this.scheduleService.getSchedule(this.id).subscribe(res =>{
+        this.schedule = res
+      })
+    }
    }
 
   ngOnInit(): void {
   }
 
-  showMessage(msg: string, isError: boolean = false): void {
+  showMessage(msg: any, isError: boolean): void {
     this.snackBar.open(msg, "X", {
-      duration: 3000,
+      duration: 5000,
       horizontalPosition: "right",
       verticalPosition: "top",
       panelClass: isError ? ["msg-error"] : ["msg-success"],
@@ -53,11 +62,24 @@ export class CadastroScheduleComponent implements OnInit {
   }
 
   criar(){
-      this.scheduleService.criar(this.schedule).subscribe(res =>{
-      this.showMessage("Sucesso");
-      this.limparForm();
-    })
+    if(this.id == null){
+      this.scheduleService.criar(this.schedule).subscribe((res) => {
+        this.showMessage("Sucesso", false);
+        this.limparForm();
+        }, (err) => {
+          this.showMessage("Erro: " + err['message'], true);
+        });
+      }
+      else{
+        this.scheduleService.criar(this.schedule).subscribe(res => {
+          this.showMessage("Editado com sucesso", false);
+        }, (err) => {
+          this.showMessage("Erro: " + err['message'], true);
+        });
+      }
   }
+
+
 
 
 }

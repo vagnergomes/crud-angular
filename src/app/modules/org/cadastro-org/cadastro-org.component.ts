@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 
 
 import { Org } from 'src/app/shared/model/org.model';
@@ -12,16 +13,26 @@ import { OrgService } from 'src/app/shared/services/org.service';
   styleUrls: ['./cadastro-org.component.scss']
 })
 export class CadastroOrgComponent implements OnInit {
+  id: any;
   org: Org;
 
   color: ThemePalette = 'accent';
   disabled: boolean;
   constructor(
-    public orgSevice: OrgService,
-    public snackBar: MatSnackBar
+    public orgService: OrgService,
+    public snackBar: MatSnackBar,
+    private route: ActivatedRoute
   ) {
     this.org =  {} as Org,
     this.disabled = false;
+
+    this.id = this.route.snapshot.paramMap.get('id');
+
+    if(this.id != null){
+      this.orgService.getOrg(this.id).subscribe( res => {
+        this.org = res
+      })
+    }
    }
 
   ngOnInit(): void {
@@ -41,10 +52,21 @@ export class CadastroOrgComponent implements OnInit {
   }
 
    public criar(){
-     this.orgSevice.criar(this.org).subscribe(res => {
-      this.showMessage('Sucesso');
-      this.limparForm();
-     })
+     if(this.id == null){
+        this.orgService.criar(this.org).subscribe(res => {
+        this.showMessage('Salvo com sucesso.');
+        this.limparForm();
+     }, (err) => {
+      this.showMessage("Erro: " + err['message'], true);
+    })
+    }else{
+      this.orgService.criar(this.org).subscribe(res => {
+        this.showMessage('Editado com sucesso.');
+        //this.limparForm();
+      }, (err) => {
+        this.showMessage("Erro: " + err['message'], true);
+      })
+    }
    }
 
 

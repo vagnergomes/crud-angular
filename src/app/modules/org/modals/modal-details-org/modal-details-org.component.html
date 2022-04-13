@@ -1,0 +1,48 @@
+<mat-card class="example-card">
+
+  <div *ngIf="org" class="container">
+    <h1>Detalhes: {{org.name}}</h1>
+  <form method="post" #frm="ngForm"  >
+    <div class="form-group">
+      <label for="name">Nome: </label>
+      <label for="quantity">{{org.name}}</label>
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Descrição: </label>
+      <label for="quantity">{{org.description}}</label>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Tipo: </label>
+      <label for="quantity">{{org.type}}</label>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Nº Registro: </label>
+      <label for="quantity">{{org.n_register}}</label>
+    </div>
+    <div class="form-group">
+      <label for="price">Cidade: </label>
+      <label for="quantity">{{org.city}}</label>
+    </div>
+    <div class="form-group">
+      <label for="price">Estado: </label>
+      <label for="quantity">{{org.province}}</label>
+    </div>
+    <div class="form-group">
+      <label for="price">Visível: </label>
+      <label for="quantity">{{org.visible}}</label>
+    </div>
+    <div class="form-group">
+      <label for="price">Ativo: </label>
+      <label for="quantity">{{org.active}}</label>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary"
+    [disabled]="frm.invalid" >Atulizar</button>
+  </form>
+
+  </div>
+  </mat-card>
